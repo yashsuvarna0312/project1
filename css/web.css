@@ -1,0 +1,119 @@
+.header{
+    height: 70px;
+    width: 1200px;
+    border: solid 0px black;
+    margin: auto;
+}
+.logo{
+    float: left;
+    text-align: center;
+    padding-top: 1px;
+}
+.menu{
+    float:left;
+}
+.ul_c{
+    list-style: none;
+}
+.li_c{
+    display: inline-block;
+    border: black solid 1px;
+    background-color: aquamarine;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 20px;
+    margin-left: 15px;
+    border-radius: 30px;
+    margin-right: 0px;
+}
+a{
+    text-decoration:none;
+    color: black;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.logo_name{
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+    float: right;
+    color:black;
+    margin-left: 25px;
+}
+.center_section{
+    height: 300px;
+    width: 1200px;
+    border: solid 0px black;
+    margin:auto;
+}
+.left_center{
+    float:left;
+    height: 270px;
+    width: 400px;
+    border:solid 0px rgb(5, 4, 4);
+    text-align: center;
+    padding-top: 30px;
+}
+.right_center{
+    float:left;
+    height: 300px;
+    width: 795px;
+    border:solid 0px wheat;
+
+}
+.h1_c{
+    font-family: Arial, Helvetica, sans-serif;
+     color:Black;
+     text-align: center;
+     }
+.s_p{
+    color:grey;
+}
+.p_c{
+    color:black;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}  
+.view_more{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 20px;
+    margin-left: 10px;
+    background-color:whitesmoke;
+
+}  
+.container{
+    height:270px;
+    width: 300px;
+    border: solid 1px black;
+    padding-left: 20px;
+    padding-top: 10px;
+    padding-right: 20px;
+    padding-bottom: 10px;
+    text-align: center;
+    border-radius: 20px;
+    background-color: darkcyan;
+    float:left;
+    margin: 10px;;
+  
+}
+.h3_c{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+.view1_more{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 15px;
+    padding-right: 15px;
+    border-radius: 20px;
+    margin-left: 10px;
+    background-color:whitesmoke;
+
+}  
