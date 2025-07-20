@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rock Paper Scissors</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      background-color: #2f2f2f;
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 30px;
+    }
+    .hands {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 40px;
+      font-size: 80px;
+    }
+    .shakePlayer {
+      animation: shakePlayer 0.8s linear;
+    }
+    .shakeComputer {
+      animation: shakeComputer 0.8s linear;
+    }
+    @keyframes shakePlayer {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(-20px); }
+      50% { transform: translateX(20px); }
+      75% { transform: translateX(-10px); }
+      100% { transform: translateX(0); }
+    }
+    @keyframes shakeComputer {
+      0% { transform: translateX(0); }
+      25% { transform: translateX(20px); }
+      50% { transform: translateX(-20px); }
+      75% { transform: translateX(10px); }
+      100% { transform: translateX(0); }
+    }
+    .score {
+      margin-top: 30px;
+    }
+    .buttons {
+      margin-top: 30px;
+    }
+    .buttons button {
+      margin: 0 10px;
+      padding: 10px 20px;
+      font-size: 18px;
+      border: 1px solid #fff;
+      border-radius: 10px;
+      background: none;
+      color: #fff;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <h1>Rock Paper Scissors</h1>
+  <div class="hands">
+    <div id="player" class="emoji">✊</div>
+    <div>v/s</div>
+    <div id="computer" class="emoji">✊</div>
+  </div>
+  <div class="buttons">
+    <button onclick="play('rock')">✊ Rock</button>
+    <button onclick="play('paper')">📄 Paper</button>
+    <button onclick="play('scissors')">✂️ Scissors</button>
+  </div>
+  <div class="score">
+    Won: <span id="won">0</span> |
+    Lost: <span id="lost">0</span> |
+    Draw: <span id="draw">0</span>
+  </div>
+
+  <script>
+    const player = document.getElementById('player');
+    const computer = document.getElementById('computer');
+    const won = document.getElementById('won');
+    const lost = document.getElementById('lost');
+    const draw = document.getElementById('draw');
+
+    const emojis = {
+      rock: '✊',
+      paper: '📄',
+      scissors: '✂️'
+    };
+
+    let winCount = 0;
+    let loseCount = 0;
+    let drawCount = 0;
+
+    function play(userChoice) {
+      const choices = ['rock', 'paper', 'scissors'];
+      const computerChoice = choices[Math.floor(Math.random() * 3)];
+
+      player.classList.add('shakePlayer');
+      computer.classList.add('shakeComputer');
+
+      setTimeout(() => {
+        player.textContent = emojis[userChoice];
+        computer.textContent = emojis[computerChoice];
+
+        player.classList.remove('shakePlayer');
+        computer.classList.remove('shakeComputer');
+
+        if (userChoice === computerChoice) {
+          drawCount++;
+          draw.textContent = drawCount;
+        } else if (
+          (userChoice === 'rock' && computerChoice === 'scissors') ||
+          (userChoice === 'paper' && computerChoice === 'rock') ||
+          (userChoice === 'scissors' && computerChoice === 'paper')
+        ) {
+          winCount++;
+          won.textContent = winCount;
+        } else {
+          loseCount++;
+          lost.textContent = loseCount;
+        }
+      }, 800);
+    }
+  </script>
+</body>
+</html>
