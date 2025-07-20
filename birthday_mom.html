@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Happy Birthday Mom 🎉</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background: linear-gradient(to bottom, #fff0f5, #ffe4e1);
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    h1 {
+      text-align: center;
+      padding: 20px;
+      font-size: 2em;
+      color: #d6336c;
+      background: #fffafc;
+      z-index: 10;
+      position: relative;
+    }
+
+    .balloon {
+      position: absolute;
+      width: 60px;
+      height: 80px;
+      border-radius: 50% 50% 45% 45%;
+      background-color: pink;
+      text-align: center;
+      line-height: 80px;
+      font-size: 24px;
+      color: white;
+      font-weight: bold;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+      animation: floatUp linear;
+      cursor: pointer;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-120vh);
+        opacity: 0.3;
+      }
+    }
+
+    .message {
+      position: absolute;
+      font-size: 1em;
+      color: #6a1b4d;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 8px 14px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      pointer-events: none;
+      z-index: 999;
+      transform: translate(-50%, -50%);
+    }
+
+    #finalMsg {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: white;
+      padding: 30px;
+      border-radius: 20px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      font-size: 2em;
+      color: #ff4081;
+      z-index: 1000;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎈 Happy Birthday Mom! 🎈</h1>
+  <div id="finalMsg">💖 You've popped 25 balloons! Happy Birthday, Mom! 💖</div>
+
+  
+  <audio id="bgMusic" autoplay loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const messages = [
+      "Love You Mom 💕", "You're Amazing 🌟", "Queen of Hearts 👑", "Thanks for Everything 🙏",
+      "You're my World 🌍", "Unmatched Love 💝", "My Inspiration ✨", "Sweetest Soul 💫",
+      "Happy Birthday 🎂", "Forever My Hero 🦸‍♀️","To the queen of our home, the heart of our family — Happy Birthday!",
+  "Your love is the fuel that keeps me going. Happy Birthday, Maa ❤️",
+  "Thanks for always believing in me, even when I didn’t believe in myself. Love you!",
+  "Every day with you is a blessing, but today we celebrate YOU!",
+  "You are my sunshine, my guide, and my safe place. Happy Birthday, Mom!",
+  "No matter how old I get, I’ll always be your little one. Love you so much!",
+  "Your hugs are magic and your words are wisdom. Happy Birthday!",
+  "A mother’s love is endless and unconditional. Thank you for everything, Mom.",
+  "Today I celebrate the strongest, kindest, and most beautiful woman I know.",
+  "You are my home, my warmth, my world. Happy Birthday, Mom 💕",
+  "Wishing you as much joy as you have given me throughout my life.",
+  "Happy Birthday to my role model and forever hero — Mom!",
+  "You make life sweeter, warmer, and more beautiful. Enjoy your day!"
+    ];
+
+    let popped = 0;
+    const maxPops = 25;
+
+    function createBalloon() {
+      const balloon = document.createElement('div');
+      balloon.className = 'balloon';
+      balloon.innerHTML = '🎈';
+
+      const colorList = ['#ff6b81', '#feca57', '#48dbfb', '#1dd1a1', '#a29bfe', '#ff9ff3'];
+      balloon.style.backgroundColor = colorList[Math.floor(Math.random() * colorList.length)];
+
+      const left = Math.random() * 95;
+      balloon.style.left = `${left}vw`;
+
+      const duration = 5 + Math.random() * 4;
+      balloon.style.animationDuration = `${duration}s`;
+
+      
+      let poppedTop = 0;
+      let poppedLeft = 0;
+
+      balloon.addEventListener('click', () => {
+        const rect = balloon.getBoundingClientRect();
+        poppedTop = rect.top + rect.height / 2;
+        poppedLeft = rect.left + rect.width / 2;
+
+        const msg = document.createElement('div');
+        msg.className = 'message';
+        msg.innerText = messages[Math.floor(Math.random() * messages.length)];
+        msg.style.top = `${poppedTop}px`;
+        msg.style.left = `${poppedLeft}px`;
+
+        document.body.appendChild(msg);
+        balloon.remove();
+
+        popped++;
+        if (popped === maxPops) {
+          document.getElementById('finalMsg').style.display = 'block';
+        }
+      });
+
+      document.body.appendChild(balloon);
+
+    
+      setTimeout(() => {
+        if (balloon.parentElement) balloon.remove();
+      }, duration * 1000);
+    }
+
+    
+    setInterval(createBalloon, 500); 
+  </script>
+</body>
+</html>
